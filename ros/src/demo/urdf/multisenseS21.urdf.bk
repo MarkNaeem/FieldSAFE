@@ -3,14 +3,14 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="Multisense">
 
-	<link name="/Multisense/head_root"/>
+    <link name="head_root"/>
 
     <joint name="head_root_joint" type="fixed">
-	    <parent link="/Multisense/head_root"/>
-	    <child link="/Multisense/head"/>
+        <parent link="head_root"/>
+        <child link="head"/>
     </joint>
 
-    <link name="/Multisense/head">
+    <link name="head">
         <visual>
             <origin xyz="0 0 0" rpy="1.57079632679 0 1.57079632679" />
             <geometry>
@@ -28,43 +28,43 @@
 
     <joint name="left_camera_joint" type="fixed">
         <origin xyz="0.0 0.105 0.0"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/left_camera_frame"/>
+        <parent link="head"/>
+        <child link="left_camera_frame"/>
     </joint>
 
-    <link name="/Multisense/left_camera_frame"/>
+    <link name="left_camera_frame"/>
 
     <joint name="right_camera_joint" type="fixed">
         <origin xyz="0.0 -0.105 0.0"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/right_camera_frame"/>
+        <parent link="head"/>
+        <child link="right_camera_frame"/>
     </joint>
 
-    <link name="/Multisense/right_camera_frame"/>
+    <link name="right_camera_frame"/>
 
     <joint name="left_camera_optical_joint" type="fixed">
         <origin xyz="0.0052046 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
-	<parent link="/Multisense/left_camera_frame"/>
-	<child link="/Multisense/left_camera_optical_frame"/>
+        <parent link="left_camera_frame"/>
+        <child link="left_camera_optical_frame"/>
     </joint>
 
-    <link name="/Multisense/left_camera_optical_frame"/>
+    <link name="left_camera_optical_frame"/>
 
     <joint name="right_camera_optical_joint" type="fixed">
         <origin xyz="0.0052046 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
-	<parent link="/Multisense/right_camera_frame"/>
-	<child link="/Multisense/right_camera_optical_frame"/>
+        <parent link="right_camera_frame"/>
+        <child link="right_camera_optical_frame"/>
     </joint>
 
-    <link name="/Multisense/right_camera_optical_frame"/>
+    <link name="right_camera_optical_frame"/>
 
     <joint name="top_left_rear_mount_joint" type="fixed">
         <origin xyz="-0.0373854 0.1 0.014" rpy="0 0 3.14159"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/top_left_rear_mount"/>
+        <parent link="head"/>
+        <child link="top_left_rear_mount"/>
     </joint>
 
-    <link name="/Multisense/top_left_rear_mount"/>
+    <link name="top_left_rear_mount"/>
 
     <!--Note the locations of the accel/mag and gyro differ from those shown
         in CAD. The S21 firmware switches axis on the accel/mag and gyro to
@@ -72,27 +72,27 @@
 
     <joint name="accel_joint" type="fixed">
         <origin xyz="0.0045 0.029 -0.0135" rpy="0.0 1.57079632679 0.0"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/accel"/>
+        <parent link="head"/>
+        <child link="accel"/>
     </joint>
 
-    <link name="/Multisense/accel"/>
+    <link name="accel"/>
 
     <joint name="mag_joint" type="fixed">
         <origin xyz="0.0045 0.029 -0.0135" rpy="0.0 1.57079632679 0.0"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/mag"/>
+        <parent link="head"/>
+        <child link="mag"/>
     </joint>
 
-    <link name="/Multisense/mag"/>
+    <link name="mag"/>
 
     <joint name="gyro_joint" type="fixed">
         <origin xyz="-0.00219539 0.03758 -0.014" rpy="-1.57079632679 0 -1.57079632679"/>
-	<parent link="/Multisense/head"/>
-	<child link="/Multisense/gyro"/>
+        <parent link="head"/>
+        <child link="gyro"/>
     </joint>
 
-    <link name="/Multisense/gyro"/>
+    <link name="gyro"/>
 
 </robot>
 

@@ -57,12 +57,11 @@ class RosNMEADriver(object):
         self.time_delay = rospy.get_param('~time_delay',0.0)
         self.time_delay_heading = rospy.get_param('~time_delay_heading',0.0)
         self.gps_time = None
+        self.gps_covariance_pos = rospy.get_param('~gps_covariance_pos', [0.0, 0.0, 1.0])
 
-	self.gps_covariance_pos = rospy.get_param('~gps_covariance_pos', [0.0, 0.0, 1.0])
-
-    # Returns True if we successfully did something with the passed in
-    # nmea_string
     def add_sentence(self, nmea_string, frame_id, timestamp=None):
+        # Returns True if we successfully did something with the passed in
+        # nmea_string
         if not check_nmea_checksum(nmea_string):
             rospy.logwarn("Received a sentence with an invalid checksum. " +
                           "Sentence was: %s" % repr(nmea_string))
@@ -137,7 +136,7 @@ class RosNMEADriver(object):
             if not math.isnan(data['utc_time']):
                 current_time_ref.time_ref = rospy.Time.from_sec(int(int(timestamp.to_sec())/(60*60))*(60*60)+data['utc_time'])
                 self.time_ref_pub.publish(current_time_ref)
-		if self.use_GPS_time:
+                if self.use_GPS_time:
                     self.gps_time = current_time_ref.time_ref
                     current_fix.header.stamp = current_time_ref.time_ref
                 current_fix.header.stamp = current_fix.header.stamp+rospy.Duration(self.time_delay)
@@ -204,8 +203,8 @@ class RosNMEADriver(object):
                 COURSE_OVER_GROUND = track_made_good_degrees_magnetic
             else:
                 DIRECTION_REFERENCE  = "Null"
-		COURSE_OVER_GROUND = float(0)
-		SPEED_OVER_GROUND = float('NaN')
+                COURSE_OVER_GROUND = float(0)
+                SPEED_OVER_GROUND = float('NaN')
             current_vtg = Course_Speed()
             current_vtg.header.stamp = current_time
             current_vtg.header.frame_id = frame_id
