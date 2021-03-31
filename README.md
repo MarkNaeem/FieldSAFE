@@ -80,7 +80,7 @@ Below, installations instructions for all necessary dependencies are given.
     ```
 * Download the prepared bag with sensor data: 
 
-    [2016-10-25-11-09-42_trimmed.bag](GOOGLEDRIVE)
+    [2016-10-25-11-09-42_trimmed.bag](GOOGLEDRIVE) 14.9 GB
 
 * Run the original demo
     ```sh
