@@ -11,14 +11,14 @@
 		<remap from="tf" to="tf_old" />
   </node>
 
-  <!-- Velodyne HDL-32E lidar: Generate point clouds 
+  <!-- Velodyne HDL-32E lidar: Generate point clouds -->
+
 	<include file="$(find htf_velodyne_32e)/launch/32e_points_postprocessing.launch">
 		<arg name="calibration" value="$(find velodyne_pointcloud)/params/32db.yaml"/>
 	<arg name="min_range" value="2.5" />
 	<arg name="max_range" value="130.0" />
 	</include>
- -->
-
+ 
 	<!-- Multisense S21 stereo camera: Generate disparity images and point clouds -->
 	<arg name="namespace"  default="Multisense" />
 	<node pkg="nodelet" type="nodelet" name="nodelet_manager"  args="manager"/>

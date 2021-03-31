@@ -10,8 +10,8 @@ bagOut = rosbag.Bag(bagOutName,'w')
 
 with bagOut as outbag:
     for topic, msg, t in bagIn.read_messages():
-        #if topic == '/Multisense/image_points2_color':
-        if '/Multisense' in topic:
+        #if '/Multisense' in topic:
+        if '/velodyne' in topic:
             try:
                 if msg.header.frame_id[0] == "/":
                     msg.header.frame_id = msg.header.frame_id[1:len(msg.header.frame_id)]
