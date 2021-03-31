@@ -52,9 +52,9 @@
 		<arg name="namespace"  default="Multisense" /> 
 		<group ns="Multisense"> 
 			
-			
-			<node pkg="tf2_ros" type="static_transform_publisher" name="cam_stereo_left_frame_to_multisense_left_camera_optical_frame" args="0.105 -0.000 -0.005 0.5 -0.5 -0.5001018 0.4998982 cam_stereo_left_frame Multisense/head_root" /> 
-				<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="cam_stereo_left_frame_to_multisense_left_camera_optical_frame" args="0.105 -0.000 -0.005 1.571 -1.571 0.000 cam_stereo_left_frame Multisense/head_root 100" />  -->
+			<!--
+			<node pkg="tf2_ros" type="static_transform_publisher" name="cam_stereo_left_frame_to_multisense_left_camera_optical_frame" args="0.105 -0.000 -0.005 0.5 -0.5 -0.5001018 0.4998982 cam_stereo_left_frame Multisense/head_root" /> -->
+			<node pkg="tf2_ros" type="static_transform_publisher" name="cam_stereo_left_frame_to_multisense_left_camera_optical_frame" args="0.105 -0.000 -0.005 1.571 -1.571 0.000 cam_stereo_left_frame Multisense/head_root 100" />
 			
 			<node pkg="robot_state_publisher" type="robot_state_publisher" name="$(arg namespace)_state_publisher"> 
 			  <param name="publish_frequency" type="double" value="50.0" />
