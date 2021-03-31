@@ -1,6 +1,6 @@
 # Task Description
 
-Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people, but we are leaving it up to you as to how you choose to represent the people and their locations.
+Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people, we are leaving it up to you as to how you choose to represent the people and their locations. However it should be in a static "map" or "world" frame.
 
 You have seven days to do this, after which you should share a link to a Git repo with your solution for Kingdom to review. We will then organise an hours video call so that you can talk us through your solution and the decisions you made.
 
