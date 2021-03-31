@@ -1,6 +1,6 @@
 # Task Description
 
-Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate data fusion algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people.
+Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate data fusion algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people, but we are leaving it up to you as to how you choose to represent the people and their locations.
 
 You have seven days to do this, after which you should share a link to a Git repo with your solution for Kingdom to review. We will then organise an hours video call so that you can talk us through your solution and the decisions you made.
 
@@ -20,14 +20,14 @@ The datasets as provided from the FieldSafe page have issues with some of the fr
 
 To use it follow these steps:
 
-* Edit the mod_frame_id.py script in */path/to/FieldSAFE/ros/src/demo/scripts/* to have the correct paths for your system
+* Edit the mod_frame_id.py script in **/path/to/FieldSAFE/ros/src/demo/scripts/** to have the correct paths for your system
 
 * Run the frame_id modifier
     ```sh
     python3 /path/to/FieldSAFE/ros/src/demo/scripts/mod_frame_id.py
     ```
 
-# FieldSAFE - Dataset for Obstacle Detection in Agriculture
+## FieldSAFE - Dataset for Obstacle Detection in Agriculture
 
 [![Watch the video](https://vision.eng.au.dk/wp-content/uploads/2020/09/fieldsafe_youtube.png)](https://www.youtube.com/watch?v=YXz1zdaFX0E)
 
@@ -37,7 +37,7 @@ Further, ground truth GPS annotations for all static and dynamic obstacles are c
 
 For more information, visit the FieldSAFE website: [https://vision.eng.au.dk/fieldsafe/](https://vision.eng.au.dk/fieldsafe/)
 
-## Citation
+### Citation
 If you use this dataset in your research or elsewhere, please cite/reference the following paper:
 
 [FieldSAFE: Dataset for Obstacle Detection in Agriculture](https://arxiv.org/abs/1709.03526)
@@ -52,7 +52,7 @@ If you use this dataset in your research or elsewhere, please cite/reference the
 ```
 
 ## Modified Installation Instructions from Kingdom
-The FieldSAFE dataset and software has been tested with Ubuntu 20.04 and ROS Noetic, but may work with other Linux distributions and newer ROS distributions.
+The FieldSAFE dataset and software has been tested with Ubuntu 20.04 and ROS Noetic, but may work with other Linux and ROS distributions.
 Below, installations instructions for all necessary dependencies are given.
 
 * Install ROS Noetic on Ubuntu 20.04 (Desktop-Full Install)
