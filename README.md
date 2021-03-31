@@ -8,7 +8,7 @@ You have seven days to do this, after which you should share a link to a Git rep
 
 The data provided is taken from the [FieldSafe](https://vision.eng.au.dk/fieldsafe/). Sensor specifications, ground truth information and ROS environment details are all provided on the page.
 
-We have trimmed down the first 147 sec of "Static obstacle session #1" for you and made it available [here](GOOGLEDRIVE).
+We have trimmed down the first 147 sec of "Static obstacle session #1" for you and made it available [here](GOOGLEDRIVE) (14.9 GB).
 
 ![RViz_screen_cap1](cap1.png)
 
