@@ -1,3 +1,32 @@
+# Task Description
+
+Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate data fusion algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people.
+
+You have seven days to do this, after which you should share a link to a Git repo with your solution for Kingdom to review. We will then organise an hours video call so that you can talk us through your solution and the decisions you made.
+
+## Data Provided
+
+The data provided is taken from the [FieldSafe](https://vision.eng.au.dk/fieldsafe/). Sensor specifications, ground truth information and ROS environment details are all provided on the page.
+
+We have trimmed down the first 147 sec of "Static obstacle session #1" for you and made it available [here](GOOGLEDRIVE).
+
+![RViz_screen_cap1](cap1.png)
+
+![RViz_screen_cap2](cap2.png)
+
+We have forked their [original Git repo](https://github.com/mikkelkh/FieldSAFE#installation-instructions) in order to correct some issues we encountered and to bring it forward to working with **ROS Noetic** on **Ubuntu 20.04**. Please use the **final_task** branch and follow the installation instructions below.
+
+The datasets as provided from the FieldSafe page have issues with some of the frame ids. Kingdom have created a script that you can use to rectify the issue, should you choose to use any of the alternate datasets. 
+
+To use it follow these steps:
+
+* Edit the mod_frame_id.py script in */path/to/FieldSAFE/ros/src/demo/scripts/* to have the correct paths for your system
+
+* Run the frame_id modifier
+    ```sh
+    python3 /path/to/FieldSAFE/ros/src/demo/scripts/mod_frame_id.py
+    ```
+
 # FieldSAFE - Dataset for Obstacle Detection in Agriculture
 
 [![Watch the video](https://vision.eng.au.dk/wp-content/uploads/2020/09/fieldsafe_youtube.png)](https://www.youtube.com/watch?v=YXz1zdaFX0E)
@@ -22,24 +51,25 @@ If you use this dataset in your research or elsewhere, please cite/reference the
 }
 ```
 
-## Installation Instructions
-The FieldSAFE dataset and software has been tested with Ubuntu 16.04 and ROS Kinetic, but may work with other Linux distributions and newer ROS distributions.
+## Modified Installation Instructions from Kingdom
+The FieldSAFE dataset and software has been tested with Ubuntu 20.04 and ROS Noetic, but may work with other Linux distributions and newer ROS distributions.
 Below, installations instructions for all necessary dependencies are given.
 
-* Install ROS Kinetic on Ubuntu 16.04 (Desktop-Full Install)
+* Install ROS Noetic on Ubuntu 20.04 (Desktop-Full Install)
 
-    http://wiki.ros.org/kinetic/Installation/Ubuntu
+    http://wiki.ros.org/noetic/Installation/Ubuntu
 
 * Install the following additional packages:
     ```sh
-    sudo apt-get install ros-kinetic-robot-localization 
-    sudo apt-get install ros-kinetic-geographic-msgs
+    sudo apt-get install ros-noetic-robot-localization 
+    sudo apt-get install ros-noetic-geographic-msgs
     sudo apt-get install libpcap-dev
     ```
 * Clone and build this repository
     ```sh
-    git clone https://github.com/mikkelkh/FieldSAFE
+    git clone https://github.com/kingdomtechnologies/FieldSAFE.git
     cd FieldSAFE
+    git checkout -B final_task
     git submodule update --init --recursive
     cd ros
     catkin_make
@@ -48,18 +78,11 @@ Below, installations instructions for all necessary dependencies are given.
     ```sh
     source devel/setup.bash
     ```
-* Download a 1 minute example bag with sensor data: 
+* Download the prepared bag with sensor data: 
 
-    [2016-10-25-11-41-21_example.bag](https://vision.eng.au.dk/data/FieldSAFE/2016-10-25-11-41-21_example.bag)
+    [2016-10-25-11-09-42_trimmed.bag](GOOGLEDRIVE)
 
 * Run the original demo
     ```sh
-    roslaunch demo demo.launch file:=/path/to/2016-10-25-11-41-21_example.bag
+    roslaunch demo demo.launch file:=/path/to/2016-10-25-11-09-42_trimmed.bag
     ```
-    or this updated demo by [@tambetm](https://github.com/tambetm) including visualization of ground truth obstacles:
-    ```sh
-    roslaunch demo demo_markers.launch file:=/path/to/2016-10-25-11-41-21_example.bag
-    ```
-* Download more data from: 
-
-    [https://vision.eng.au.dk/fieldsafe/](https://vision.eng.au.dk/fieldsafe/)
