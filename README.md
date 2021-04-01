@@ -2,13 +2,13 @@
 
 Develop a ROS package that detects people and maps their locations. You are free to utilise appropriate algorithms, ROS packages and opensource libraries as you see fit. It is worth considering that downstream of your mapped locations would be a path planner that takes action to avoid the people, we are leaving it up to you as to how you choose to represent the people and their locations. However, the locations ought to be in a static "map" or "world" reference frame.
 
-You have seven days to do this, after which you should share a link to a Git repo with your solution for Kingdom to review. We will then organise an hours video call so that you can talk us through your solution and the decisions you made.
+You have seven days to do this, after which you should share a link to a Git repo with your solution for Kingdom to review. We will then organise an hour video call so that you can talk us through your solution and the decisions you made along the way.
 
 ## Data Provided
 
 The data provided is taken from the [FieldSafe](https://vision.eng.au.dk/fieldsafe/). Sensor specifications, ground truth information and ROS environment details are all provided on the page.
 
-We have trimmed down the first 147 sec of "Static obstacle session #1" for you and made it available [here](GOOGLEDRIVE) (14.9 GB).
+We have trimmed down the first 147 sec of "Static obstacle session #1" for you and made it available [here](https://drive.google.com/file/d/1nrNT5PcmUbDVAxPwFy5HhODAPxsVk5iK/view?usp=sharing) (14.9 GB).
 
 ![RViz_screen_cap1](cap1.png)
 
@@ -80,7 +80,7 @@ Below, installations instructions for all necessary dependencies are given.
     ```
 * Download the prepared bag with sensor data: 
 
-    [2016-10-25-11-09-42_trimmed.bag](GOOGLEDRIVE) 14.9 GB
+    [2016-10-25-11-09-42_trimmed.bag](https://drive.google.com/file/d/1nrNT5PcmUbDVAxPwFy5HhODAPxsVk5iK/view?usp=sharing) 14.9 GB
 
 * Run the original demo
     ```sh
