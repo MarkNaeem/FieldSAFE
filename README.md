@@ -69,16 +69,18 @@ Below, installations instructions for all necessary dependencies are given.
     ```sh
     git clone https://github.com/kingdomtechnologies/FieldSAFE.git
     cd FieldSAFE
-    git checkout -B final_task
+    git switch final_task
     git submodule update --init --recursive
-    cd ros
-    catkin_make
+    cd ros/src/velodyne
+    git switch melodic-devel
+    cd ../..
+    catkin_make # This will likely result in a build error from the Velodyne package but this shouldn't be an issue
     ```
 * Environment Setup
     ```sh
     source devel/setup.bash
     ```
-* Download the prepared bag with sensor data: 
+* Download the pre-prepared bag with sensor data: 
 
     [2016-10-25-11-09-42_trimmed.bag](https://drive.google.com/file/d/1nrNT5PcmUbDVAxPwFy5HhODAPxsVk5iK/view?usp=sharing) 14.9 GB
 
