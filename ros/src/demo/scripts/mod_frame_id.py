@@ -2,10 +2,10 @@ import rosbag
 from copy import deepcopy
 import tf
 
-bagInName = '/home/matthew/Desktop/software_eng_interview/2016-10-25-11-09-42.bag'
+bagInName = '/media/mark/uhd1/2016-10-25-11-09-42_trimmed.bag'
 bagIn = rosbag.Bag(bagInName)
 
-bagOutName = '/home/matthew/Desktop/software_eng_interview/2016-10-25-11-09-42_corrected_frames.bag'
+bagOutName = '/media/mark/uhd1/2016-10-25-11-09-42_trimmed_corrected_frames.bag'
 bagOut = rosbag.Bag(bagOutName,'w')
 
 with bagOut as outbag:
