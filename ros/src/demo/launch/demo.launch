@@ -3,6 +3,7 @@
 <launch>
 
   <arg name="bag_rate" default="1.0" />
+  <!-- <arg name="bag_start" default="75.0" /> -->  <!-- to avoid real moving humans -->
   <arg name="bag_start" default="0.0" />
   <arg name="rviz" default="true" />
   
@@ -26,13 +27,13 @@
 		<remap from="/depth_registered/points" to="$(arg namespace)/image_points2_color"/>
 	</node>
 
-	<!-- FlirA65 thermal camera: Flip image vertically  -->
-	<!--
+	<!-- FlirA65 thermal camera: Flip image vertically  -->	
+	<!-- 	
 	<node type="mirror_image.py" name="mirror_image" pkg="mirror_image" respawn="true" output="screen">
 		<param name="topicImageIn" value="/FlirA65/image_raw" />
 		<param name="topicImageOut" value="/FlirA65_flipped" />
 	</node>
-	-->
+	 -->
 			
 	<!-- Delphi ESR radar: Visualize messages  -->
 	<!--
@@ -50,5 +51,87 @@
 		<include file="$(find demo)/launch/map_visualization.xml"/>
 		<node name="rviz" pkg="rviz" type="rviz" args="-d $(find demo)/demo.rviz" respawn="false" />
 	</group>
+
+
+	<arg name="yolact_weights" default="$(find demo)/weights/yolact_plus_resnet50_54_800000.pth" />
+	<node pkg="depth_yolact_ros" type="depth_yolact_ros" name="depth_yolact_ros" output="screen">
+		<param name="model_path" value="$(arg yolact_weights)" />
+		<param name="image_topic" value="/Multisense/left/image_rect_color" />
+		<param name="depth_topic" value="/Multisense/depth" />
+		<!--<param name="depth_topic" value="/depth_image_creator/output" />-->
+		<param name="camera_info_topic" value="/Multisense/left/camera_info" />
+
+		<param name="use_compressed_image" value="False" />
+		<param name="use_compressed_depth" value="False" />
+		<param name="publish_visualization" value="True" />
+		<param name="publish_detections" value="False" />
+		<param name="publish_poincloud" value="True" />
+		<param name="publish_bboxes" value="True" />
+		<param name="score_threshold" value="0.25" />		
+		<param name="use_kmeans" value="False" />
+		<param name="initial_centroid" value="150" />
+		<param name="use_bboxes_world_frame" value="True" />
+		<param name="world_frame" value="odom" />		
+		<param name="use_gaussian" value="True" />
+		<param name="std_multiplier" value="1.0" />				
+	</node>
+
+
+	<!-- This was a node i made before finding a more developed package on GitHub -->
+	<!-- <node pkg="yolact_ros" type="node.py" name="yolact" output="screen">
+		<remap from="/yolact_ros/input_image"  to="/Logitech_webcam/image_raw/compressed"/>
+		<remap from="/yolact_ros/output_image" to="/Logitech_webcam/image_masked"/>
+	</node> -->
+
+
+	<!--<node name="depth_image_creator"
+			pkg="nodelet" type="nodelet"
+			args="standalone jsk_pcl/DepthImageCreator">
+		<remap from="~input" to="/velodyne_points" />
+		<remap from="~info" to="/Multisense/left/image_rect_color/camera_info" />
+		<param name="use_approximate" value="True" />
+	</node>-->
+
+
+    <!-- <node name="fuse_depth_images"
+          pkg="nodelet" type="nodelet"
+          args="standalone jsk_pcl/FuseDepthImages">
+		<param name="approximate_sync" value="True" />
+		<param name="queue_size" value="50" />
+		<param name="output_frame" value="Multisense/left_camera_optical_frame" />
+    	<rosparam param="input_topics">[/depth_image_creator/output,/Multisense/depth]</rosparam>
+	</node> -->
+
+	<!-- <node name="apply_mask_image"
+		pkg="nodelet" type="nodelet"
+        args="standalone jsk_perception/ApplyMaskImage">
+	<remap from="~input" to="/fuse_depth_images/output" />
+	<remap from="~input/mask" to="/yolact_ros/mask" />
+	<remap from="~input/camera_info" to="/Multisense/left/image_rect_color/camera_info" />
+	<param name="approximate_sync" value="True" />
+	</node> -->
+
+
+	<!-- <node pkg="nodelet" type="nodelet" name="depth2pointcloud"	 args="load depth_image_proc/point_cloud_xyzrgb nodelet_manager rgb/camera_info:=/Multisense/left/image_rect_color/camera_info rgb/image_rect_color:=/Multisense/left/image_rect_color depth_registered/image_rect:=/fuse_depth_images/output">
+		<remap from="/depth_registered/points" to="/fused_pcl"/>
+	</node> -->
+
+	<!-- <node pkg="nodelet" type="nodelet" name="depth2pointcloud"	 args="load depth_image_proc/point_cloud_xyzrgb nodelet_manager rgb/camera_info:=/Multisense/left/image_rect_color/camera_info rgb/image_rect_color:=/Multisense/left/image_rect_color depth_registered/image_rect:=/depth_image_creator/output">
+		<remap from="/depth_registered/points" to="/fused_pcl"/>
+	</node> -->
+
+
+	<!-- <node name="mask_image_filter" pkg="jsk_pcl_ros" type="mask_image_filter">
+		<param name="~negative" value="false" />
+		<remap from="~input" to="/fused_pcl" />
+		<remap from="~input/mask" to="/yolact_ros/mask" />
+		<remap from="~input/camera_info" to="/Multisense/left/image_rect_color/camera_info" />
+	</node>
+
+	<node name="extract_indices"
+		pkg="jsk_pcl_ros" type="extract_indices">
+	<remap from="~input" to="/fused_pcl" />
+	<remap from="~indices" to="mask_image_filter/output" />
+	</node> -->
 
 </launch>
