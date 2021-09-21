@@ -88,3 +88,19 @@ Below, installations instructions for all necessary dependencies are given.
     ```sh
     roslaunch demo demo.launch file:=/path/to/2016-10-25-11-09-42_trimmed.bag
     ```
+## In a Parallel Universe
+Well, having that said and the task done. I came acorss this completely by chance in the same day I received the task and I just wanted to keep it till the end... (Drum rolls, Please!) 
+
+Kigdom Technologies is working really really hard to make doing your lawn mowing, a really tedious task to do yourself, something from the past. Meanwhile, this guy from this other universe is doing this.....
+
+<p align="center"><a target="_blank" href="https://www.youtube.com/watch?v=dmCQkosIa2k"><img src="https://img.youtube.com/vi/dmCQkosIa2k/0.jpg" width="480" ></a></p>
+
+
+
+
+<p float="left">
+    <img src="https://pbs.twimg.com/media/E5hVWicVIAQ5KvF.jpg" alt="Can you do it cheaper?2" width="480" height="480"/>
+    <img src="https://i.imgur.com/iEhSXot.jpeg" alt="Can you do it cheaper?2" width="480"/>
+<p/>
+
+Sorry, Matthew. I had to do it! :D
